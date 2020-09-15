@@ -49,7 +49,7 @@ uint32_t tempRandPallet[5]; //pallet for random colors (length sets number of co
 
 boolean direct = true;
 boolean setBrightnessMode = false;
-boolean brighnessModeEnable = false;
+boolean brighnessModeEnable = true;
 int brightness = 100;
 int brightnessArray[] = { 30, 50, 100, 150, 220};
 int brightnessIndex = 2;
@@ -88,9 +88,11 @@ void loop() {
         strip.colorSpinSimple( columbs, 1, 0, 0, 20, 2, 20, 0, 2, 24 * 5, 50 ); //rainbow half
         break;
       case 3:
-        strip.setBrightness(brightnessArray[brightnessIndex] + 60);
+        //strip.setBrightness(brightnessArray[brightnessIndex] + 60);
+        strip.setBrightness(brightness + 60);
         strip.fireworksRand( 1, -1, 0, 2, 1, 40, 60);
-        strip.setBrightness(brightnessArray[brightnessIndex]);
+        strip.setBrightness(brightness);
+        //strip.setBrightness(brightnessArray[brightnessIndex]);
         break;
       case 4:
         strip.genRandPallet( tempRandPallet, SIZE(tempRandPallet) );
@@ -182,7 +184,7 @@ void buttonHandle() { //interrupt with debounce
 
     if (interrupt_time - last_interrupt_time < 400) {
       buttonPressCount++;
-      setBrightnessMode = false;
+      //setBrightnessMode = false;
     }
   }
   last_interrupt_time = interrupt_time;
@@ -193,7 +195,8 @@ void buttonHandle() { //interrupt with debounce
 void handlePresses() {
   strip.pixelStripStopPattern = true;
   if (setBrightnessMode && brighnessModeEnable) {
-    brightnessIndex = (brightnessIndex + 1) % SIZE(brightnessArray);
+    //brightnessIndex = (brightnessIndex + 1) % SIZE(brightnessArray);
+     setBrightnessMode = false;
   } else if (buttonPressCount == 1) {
     patternCounter++;
   } else if (buttonPressCount == 2) {
@@ -202,8 +205,9 @@ void handlePresses() {
 }
 
 void adjustBrighness() {
-  //potReading = analogRead(A4);
-  //brightness = map(potReading, 100, 750, 20, 240);
-  strip.setBrightness(brightnessArray[brightnessIndex]);
+  potReading = analogRead(A5);
+  brightness = map(potReading, 0, 1023, 20, 240);
+  //strip.setBrightness(brightnessArray[brightnessIndex]);
+  strip.setBrightness(brightness);
   strip.fillStrip(blue, true);
 }
