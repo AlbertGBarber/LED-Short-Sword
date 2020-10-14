@@ -19,6 +19,8 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //THE SOFTWARE.
 
+//Code intended to run on Arduino Pro-mini or Uno
+
 //libraries
 #include <EEPROM.h>
 #include <PixelStrip.h>
