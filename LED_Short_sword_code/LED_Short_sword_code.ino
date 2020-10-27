@@ -54,6 +54,8 @@
 #define DEBOUNCE_TIME         100
 #define DOUBLE_PRESS_INTERVAL 400 //maximum time between presses for them to count as a double press
 
+#define NUM_EFFECTS           25 //total number of effect animations
+
 //====================================================================================
 //some global variables
 boolean direct = true; //direction setting for various effects
@@ -257,7 +259,7 @@ void loop() {
         strip.sonarSpinRand( columbs, 1, 0, 30, 52, true, false, true, false, 340, 20); //30,52
         break;
       default:
-        patternCounter = 0;
+        patternCounter = (patternCounter + 1) % NUM_EFFECTS;
         break;
     }
   }
