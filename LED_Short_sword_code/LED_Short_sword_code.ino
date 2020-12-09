@@ -214,18 +214,18 @@ void loop() {
         strip.gradientCycleRand( 5, 16, 300, direct, 60);
         break;
       case 12:
-        strip.shooterSeg( columbs, pallet, 4, 0, 1, 12, 0, 0, 4, true, false, 30, 500);
+        strip.shooterSeg( columbs, pallet, 4, 0, true, 1, 12, 0, 0, 4, true, false, 30, 500);
         break;
       case 13:
         strip.setRainbowOffsetCycle(40, true);
         strip.runRainbowOffsetCycle(true);
-        strip.shooterSeg( columbs, pallet, 1, -1, 1, 12, 0, 0, 1, true, false, 30, 500); //rainbow Bg, white shooters
+        strip.shooterSeg( columbs, pallet, 1, -1, true, 1, 12, 0, 0, 1, true, false, 30, 500); //rainbow Bg, white shooters
         break;
       case 14:
-        strip.shooterSeg( columbs, pallet, 5, 0, 2, 5, 1, 5, 2, true, false, 20, 500);
+        strip.shooterSeg( columbs, pallet, 5, 0, true, 2, 5, 1, 5, 2, true, false, 20, 500);
         break;
       case 15:
-        strip.shooterSeg( columbs, pallet, 5, 0, 2, 5, 3, 0, 4, true, false, 30, 500);
+        strip.shooterSeg( columbs, pallet, 5, 0, true, 2, 5, 3, 0, 4, true, false, 30, 500);
         break;
       case 16:
         strip.solidRainbowCycle(20, 3);
